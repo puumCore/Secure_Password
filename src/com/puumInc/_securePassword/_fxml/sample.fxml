@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--suppress JavaFxDefaultTag -->
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.Group?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.control.Spinner?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.SVGPath?>
+<?import javafx.scene.text.Font?>
+
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="613.0" prefWidth="507.0" style="-fx-background-color: #FEFEFE;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.puumInc._securePassword._controller.Controller">
+    <children>
+      <AnchorPane>
+         <StackPane.margin>
+            <Insets />
+         </StackPane.margin>
+         <children>
+            <VBox fillWidth="false" layoutX="24.0" layoutY="113.0" prefHeight="435.0" prefWidth="461.0" spacing="30.0">
+               <children>
+                  <HBox prefHeight="32.0" prefWidth="462.0">
+                     <children>
+                                <TextField fx:id="plainTextField" prefHeight="32.0" prefWidth="386.0" promptText="Type some plain text or ..." style="-fx-background-radius: 0px; -fx-text-fill: #1D1A1A;">
+                                    <font>
+                                        <Font size="15.0" />
+                                    </font>
+                                </TextField>
+                        <Button mnemonicParsing="false" onAction="#generate_random_text" prefHeight="32.0" prefWidth="260.0" style="-fx-background-radius: 0px;" text="Show a Random Text" textFill="#1d1a1a">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
+                     </children>
+                  </HBox>
+                          <ComboBox fx:id="comboBox" prefHeight="31.0" prefWidth="182.0" promptText="Choose hash" style="-fx-background-radius: 0px;">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </ComboBox>
+                  <HBox spacing="30.0">
+                     <children>
+                        <Group fx:id="silverGroup" disable="true">
+                           <children>
+                              <HBox alignment="CENTER_LEFT" layoutY="27.0" spacing="5.0">
+                                 <children>
+                                    <Label text="Rounds" />
+                                            <Spinner fx:id="logRoundsSpinner" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="32.0" prefWidth="75.0" style="-fx-background-radius: 0px;">
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
+                                    </Spinner>
+                                 </children>
+                              </HBox>
+                              <Label text="Silver">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </Group>
+                        <Group fx:id="bronzeGroup" disable="true" layoutX="10.0" layoutY="10.0">
+                           <children>
+                              <HBox alignment="CENTER_LEFT" layoutY="27.0" prefHeight="26.0" prefWidth="94.0" spacing="5.0">
+                                 <children>
+                                    <Label text="Param" />
+                                    <TextField fx:id="bronzeParamTF" prefHeight="26.0" prefWidth="47.0" />
+                                 </children>
+                              </HBox>
+                              <Label text="Bronze">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </Group>
+                        <Group fx:id="ironGroup" disable="true">
+                           <children>
+                              <Label text="Alpha Numeric">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Label>
+                              <HBox alignment="CENTER_LEFT" layoutY="31.0" spacing="5.0">
+                                 <children>
+                                    <Label text="Length" />
+                                    <Spinner fx:id="lengthSpinner" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="32.0" prefWidth="75.0" style="-fx-background-radius: 0px;">
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
+                                    </Spinner>
+                                 </children>
+                              </HBox>
+                           </children>
+                        </Group>
+                     </children>
+                  </HBox>
+                          <VBox spacing="15.0">
+                              <children>
+                                <Button maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#show_result" prefHeight="37.0" prefWidth="587.0" style="-fx-background-radius: 0px;" text="Show Result" textFill="#1d1a1a">
+                                    <font>
+                                        <Font name="System Bold" size="16.0" />
+                                    </font>
+                                    <cursor>
+                                        <Cursor fx:constant="HAND" />
+                                    </cursor>
+                                </Button>
+                                  <ProgressBar fx:id="progressBar" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="18.0" prefWidth="301.0" progress="0.0" />
+                                  <Label fx:id="statusLabel" alignment="CENTER" prefHeight="19.0" prefWidth="729.0" textFill="#09b233" wrapText="true">
+                                      <font>
+                                          <Font name="System Bold" size="13.0" />
+                                      </font>
+                                  </Label>
+                              <TextArea fx:id="hashedResultTextArea" editable="false" prefHeight="99.0" prefWidth="621.0" promptText="Secure text" style="-fx-background-radius: 0px;" wrapText="true">
+                           <font>
+                              <Font size="14.0" />
+                           </font></TextArea>
+                              </children>
+                          </VBox>
+               </children>
+            </VBox>
+            <StackPane layoutX="228.0" layoutY="22.0">
+               <children>
+                  <SVGPath content="M27 0L27 -2.36042e-06C27.0001 -1.90735e-06 27.0001 -1.90735e-06 27.0001 -1.90735e-06C35.9541 0.0613792 46.0005 0.82061 50.8995 9.50579C51.8217 11.1406 52.4838 12.912 52.9435 14.7292C53.7001 17.7205 53.8781 20.7801 53.9784 23.8514L54 27C54 27.0005 54 27.0005 54 27.0005C53.9386 35.9544 53.1793 46.0005 44.4942 50.8995C42.8594 51.8217 41.088 52.4838 39.2708 52.9435C36.2795 53.7001 33.2199 53.8781 30.1486 53.9784L27 54C26.9993 54 26.9993 54 26.9993 54C18.0454 53.9386 7.99938 53.1792 3.10047 44.4942C2.17834 42.8594 1.5162 41.088 1.05654 39.2708C0.299869 36.2795 0.121895 33.2199 0.0215816 30.1486L-1.18021e-06 27C-1.90735e-06 26.9999 -1.90735e-06 26.9999 -1.90735e-06 26.9999C0.0613799 18.0459 0.820628 7.99952 9.50579 3.10047C11.1406 2.17834 12.912 1.5162 14.7292 1.05654C17.7205 0.299868 20.7801 0.121895 23.8514 0.0215816L27 0Z" fill="#1d1a1a" fillRule="EVEN_ODD" />
+                  <SVGPath content="M8.5 0C3.80558 0 0 4.70101 0 10.5C0 16.299 3.80558 21 8.5 21C13.1944 21 17 16.299 17 10.5C17 4.70101 13.1944 0 8.5 0ZM8.5 2.853C5.18629 2.853 2.5 6.29566 2.5 10.5424C2.5 14.7891 5.18629 18.2318 8.5 18.2318C11.8137 18.2318 14.5 14.7891 14.5 10.5424C14.5 6.29566 11.8137 2.853 8.5 2.853Z" fill="#fefefe" fillRule="EVEN_ODD">
+                     <StackPane.margin>
+                        <Insets bottom="20.0" />
+                     </StackPane.margin>
+                  </SVGPath>
+                  <StackPane>
+                     <children>
+                        <SVGPath content="M13.9759 0L13.9759 -1.22181e-06C13.9792 0 13.9792 0 13.9792 0C17.8435 0.00808289 24.6743 -0.953622 26.8887 3.42867C27.3175 4.2772 27.549 5.2134 27.6898 6.14912C27.9069 7.59151 27.9201 9.05281 27.9446 10.5079L27.9518 13.9759C27.9518 13.9872 27.9518 13.9872 27.9518 13.9872C27.9437 17.8508 28.9035 24.6752 24.5232 26.8887C23.6746 27.3175 22.7384 27.549 21.8027 27.6898C20.3603 27.9069 18.899 27.9201 17.4439 27.9446L13.9759 27.9518C13.9607 27.9518 13.9607 27.9518 13.9607 27.9518C10.0974 27.9437 3.27612 28.9026 1.06309 24.5232C0.634314 23.6746 0.402842 22.7384 0.262006 21.8027C0.0449099 20.3603 0.0317402 18.899 0.00724697 17.4439L-6.10907e-07 13.9759C0 13.9714 0 13.9714 0 13.9714C0.00808553 10.1072 -0.953328 3.27742 3.42867 1.06309C4.2772 0.634312 5.2134 0.402843 6.14912 0.262007C7.59151 0.0449107 9.0528 0.0317414 10.5079 0.00724697L13.9759 0Z" fill="#1d1a1a" fillRule="EVEN_ODD" />
+                        <SVGPath content="M12.7002 0L12.7002 -1.11029e-06C12.7014 0 12.7014 0 12.7014 0C16.5936 0.0105243 22.5636 -0.641785 24.5056 3.76904C24.8216 4.48665 25.0128 5.25418 25.1365 6.02652C25.3468 7.33954 25.3676 8.66961 25.3931 9.99598L25.4004 12.7002C25.4004 12.7049 25.4004 12.7049 25.4004 12.7049C25.3899 16.5966 26.0412 22.5641 21.6314 24.5056C20.9138 24.8216 20.1463 25.0128 19.3739 25.1365C18.0609 25.3468 16.7308 25.3676 15.4045 25.3931L12.7002 25.4004C12.6937 25.4004 12.6937 25.4004 12.6937 25.4004C8.80228 25.3899 2.83614 26.0407 0.894807 21.6314C0.578856 20.9138 0.387646 20.1463 0.263961 19.3739C0.0536892 18.0609 0.0328507 16.7308 0.00730896 15.4044L-5.55144e-07 12.7002C0 12.6985 0 12.6985 0 12.6985C0.010526 8.80646 -0.641644 2.83673 3.76904 0.894808C4.48665 0.578855 5.25418 0.387648 6.02652 0.263962C7.33954 0.0536896 8.66961 0.0328508 9.99598 0.00730896L12.7002 0Z" fill="#fefefe" fillRule="EVEN_ODD" />
+                        <SVGPath content="M2.07614 4.15228C0.929519 4.15228 0 3.22276 0 2.07614C0 0.929519 0.929519 0 2.07614 0C3.22276 0 4.15228 0.929519 4.15228 2.07614C4.15228 3.22276 3.22276 4.15228 2.07614 4.15228ZM8.79147 4.15228C7.64485 4.15228 6.71533 3.22276 6.71533 2.07614C6.71533 0.929519 7.64485 0 8.79147 0C9.93809 0 10.8676 0.929519 10.8676 2.07614C10.8676 3.22276 9.93809 4.15228 8.79147 4.15228ZM15.5068 4.15228C14.3602 4.15228 13.4307 3.22276 13.4307 2.07614C13.4307 0.929519 14.3602 0 15.5068 0C16.6534 0 17.5829 0.929519 17.5829 2.07614C17.5829 3.22276 16.6534 4.15228 15.5068 4.15228Z" fill="#1d1a1a" fillRule="EVEN_ODD" />
+                     </children>
+                     <StackPane.margin>
+                        <Insets top="6.0" />
+                     </StackPane.margin>
+                  </StackPane>
+               </children>
+            </StackPane>
+            <HBox alignment="BOTTOM_CENTER" layoutX="177.0" layoutY="573.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="15.0" prefWidth="156.0" spacing="5.0">
+               <children>
+                  <SVGPath content="M0.576 12.116L8.172 7.508L8.172 10.568L4.752 12.728L8.172 14.762L8.172 17.984L0.576 13.484L0.576 12.116Z" fill="#e81123" />
+                  <SVGPath content="M16.418 17.12Q17.21 17.57 18.29 17.57Q19.172 17.57 19.928 17.192Q20.684 16.814 21.224 16.157Q21.764 15.5 22.07 14.6Q22.376 13.7 22.376 12.638Q22.376 11.612 22.043 10.721Q21.71 9.83 21.125 9.173Q20.54 8.516 19.739 8.138Q18.938 7.76 17.984 7.76Q16.904 7.76 16.121 8.21Q15.338 8.66 14.816 9.47L14.816 7.94L12.314 7.94L12.314 21.224L15.194 21.224L15.194 15.86Q15.626 16.67 16.418 17.12ZM64.466 17.39L67.346 17.39L67.346 11.342Q67.346 10.748 67.247 10.118Q67.148 9.488 66.842 8.957Q66.536 8.426 65.987 8.093Q65.438 7.76 64.538 7.76Q63.404 7.76 62.522 8.237Q61.64 8.714 61.1 9.596Q61.01 9.218 60.812 8.885Q60.614 8.552 60.29 8.3Q59.966 8.048 59.525 7.904Q59.084 7.76 58.49 7.76Q57.302 7.76 56.411 8.21Q55.52 8.66 54.998 9.524L54.998 7.94L52.406 7.94L52.406 17.39L55.286 17.39L55.286 11.972Q55.538 11.216 56.087 10.757Q56.636 10.298 57.212 10.298Q57.752 10.298 58.094 10.721Q58.436 11.144 58.436 12.08L58.436 17.39L61.316 17.39L61.316 11.972Q61.442 11.612 61.649 11.306Q61.856 11 62.108 10.775Q62.36 10.55 62.657 10.424Q62.954 10.298 63.242 10.298Q63.782 10.298 64.124 10.721Q64.466 11.144 64.466 12.08L64.466 17.39ZM26.491 16.661Q27.238 17.57 28.696 17.57Q29.884 17.57 30.847 17.129Q31.81 16.688 32.458 15.752L32.512 16.328Q32.728 17.534 34.276 17.534Q34.51 17.534 34.798 17.507Q35.086 17.48 35.5 17.39L35.5 14.96Q35.158 14.924 35.023 14.753Q34.888 14.582 34.888 14.15L34.888 7.94L32.008 7.94L32.008 13.772Q31.594 14.528 31.054 14.834Q30.514 15.14 29.938 15.14Q29.308 15.14 28.966 14.681Q28.624 14.222 28.624 13.358L28.624 7.94L25.744 7.94L25.744 13.988Q25.744 15.752 26.491 16.661ZM41.982 17.57Q40.524 17.57 39.777 16.661Q39.03 15.752 39.03 13.988L39.03 7.94L41.91 7.94L41.91 13.358Q41.91 14.222 42.252 14.681Q42.594 15.14 43.224 15.14Q43.8 15.14 44.34 14.834Q44.88 14.528 45.294 13.772L45.294 7.94L48.174 7.94L48.174 14.15Q48.174 14.582 48.309 14.753Q48.444 14.924 48.786 14.96L48.786 17.39Q48.372 17.48 48.084 17.507Q47.796 17.534 47.562 17.534Q46.014 17.534 45.798 16.328L45.744 15.752Q45.096 16.688 44.133 17.129Q43.17 17.57 41.982 17.57ZM18.173 14.933Q17.786 15.14 17.318 15.14Q16.652 15.14 16.067 14.654Q15.482 14.168 15.194 13.448L15.194 11.504Q15.482 10.91 16.031 10.559Q16.58 10.208 17.174 10.208Q17.66 10.208 18.083 10.388Q18.506 10.568 18.803 10.892Q19.1 11.216 19.271 11.657Q19.442 12.098 19.442 12.62Q19.442 13.124 19.289 13.583Q19.136 14.042 18.848 14.384Q18.56 14.726 18.173 14.933Z">
+                     <HBox.margin>
+                        <Insets bottom="-3.0" />
+                     </HBox.margin>
+                  </SVGPath>
+                  <SVGPath content="M71.218 17.39L71.218 14.456L73.576 14.456L73.576 17.39L71.218 17.39Z" fill="#e81123" />
+                  <SVGPath content="M109.224 11.144Q109.224 10.226 109.44 9.308Q109.656 8.39 110.025 7.454Q110.394 6.518 110.889 5.564Q111.384 4.61 111.96 3.638L114.156 4.538Q113.904 4.934 113.526 5.663Q113.148 6.392 112.788 7.31Q112.428 8.228 112.167 9.236Q111.906 10.244 111.906 11.198Q111.906 12.656 112.518 14.195Q113.13 15.734 114.084 17.426L111.996 18.452Q111.438 17.624 110.934 16.724Q110.43 15.824 110.052 14.897Q109.674 13.97 109.449 13.025Q109.224 12.08 109.224 11.144ZM121.601 13.025Q121.826 12.08 121.826 11.144Q121.826 10.226 121.61 9.308Q121.394 8.39 121.025 7.454Q120.656 6.518 120.161 5.564Q119.666 4.61 119.09 3.638L116.894 4.538Q117.146 4.934 117.524 5.663Q117.902 6.392 118.262 7.31Q118.622 8.228 118.883 9.236Q119.144 10.244 119.144 11.198Q119.144 12.656 118.532 14.195Q117.92 15.734 116.966 17.426L119.054 18.452Q119.612 17.624 120.116 16.724Q120.62 15.824 120.998 14.897Q121.376 13.97 121.601 13.025ZM77.538 6.86L77.538 4.25L80.418 4.25L80.418 6.86L77.538 6.86ZM93.506 17.39L90.626 17.39L90.626 12.08Q90.626 11.144 90.275 10.721Q89.924 10.298 89.348 10.298Q89.042 10.298 88.736 10.424Q88.43 10.55 88.142 10.775Q87.854 11 87.629 11.306Q87.404 11.612 87.278 11.972L87.278 17.39L84.398 17.39L84.398 7.94L86.99 7.94L86.99 9.524Q87.512 8.678 88.466 8.219Q89.42 7.76 90.662 7.76Q91.58 7.76 92.138 8.093Q92.696 8.426 93.002 8.957Q93.308 9.488 93.407 10.118Q93.506 10.748 93.506 11.342L93.506 17.39ZM97.198 10.793Q96.856 11.684 96.856 12.656Q96.856 13.628 97.198 14.519Q97.54 15.41 98.197 16.085Q98.854 16.76 99.799 17.165Q100.744 17.57 101.932 17.57Q103.57 17.57 104.713 16.868Q105.856 16.166 106.378 15.068L103.57 14.204Q103.354 14.618 102.904 14.879Q102.454 15.14 101.914 15.14Q101.482 15.14 101.095 14.96Q100.708 14.78 100.42 14.456Q100.132 14.132 99.97 13.673Q99.808 13.214 99.808 12.656Q99.808 11.54 100.411 10.874Q101.014 10.208 101.914 10.208Q102.994 10.208 103.552 11.108L106.36 10.262Q105.802 9.146 104.686 8.453Q103.57 7.76 101.932 7.76Q100.726 7.76 99.781 8.156Q98.836 8.552 98.188 9.227Q97.54 9.902 97.198 10.793ZM77.538 17.39L77.538 7.94L80.418 7.94L80.418 17.39L77.538 17.39Z" />
+                  <SVGPath content="M128.02 17.39L137.11 4.61L133.924 4.61L124.834 17.39L128.02 17.39ZM140.73 17.984L148.344 13.484L148.344 12.116L140.73 7.508L140.73 10.568L144.168 12.728L140.73 14.762L140.73 17.984Z" fill="#e81123">
+                     <HBox.margin>
+                        <Insets bottom="1.0" />
+                     </HBox.margin>
+                  </SVGPath>
+               </children>
+            </HBox>
+         </children>
+      </AnchorPane>
+    </children>
+</StackPane>

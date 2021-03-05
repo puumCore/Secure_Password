@@ -1,0 +1,4 @@
+Manifest-Version: 1.0
+Main-Class: scom.puumInc._securePassword.Main
+Class-Path: scom.puumInc._securePassword.**
+
