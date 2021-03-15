@@ -114,11 +114,12 @@ public class Controller implements Initializable {
                 return;
             }
         }
+        if (comboBox.getSelectionModel().getSelectedItem() == null) {
+            comboBox.getSelectionModel().select(0);
+        }
         if (!comboBox.getSelectionModel().getSelectedItem().equals(SecurityType.RANDOM_ALPHANUMERIC.getMyType())) {
             if (plainTextField.getText().trim().isEmpty() || plainTextField.getText() == null) {
-                error_message_alert("Validation failure", "Kindly type some text as required.").show();
-                event.consume();
-                return;
+                generate_random_text(new ActionEvent());
             }
         }
         hashedResultTextArea.clear();
@@ -198,6 +199,7 @@ public class Controller implements Initializable {
             }
             ((Button) event.getSource()).setDisable(false);
         } catch (Exception e) {
+            e.printStackTrace();
             programmer_error(e).show();
         }
         event.consume();
