@@ -1,15 +1,16 @@
 // Copyright (C) 2011 - Will Glozer.  All rights reserved.
 
-package com.puumInc._securePassword._outsourced._hash;
+package com.puumInc.securePassword._outsourced._hash.crypto;
+
+import com.puumInc.securePassword._outsourced._hash.codec.Base64;
 
 import java.io.UnsupportedEncodingException;
-import java.nio.charset.StandardCharsets;
 import java.security.GeneralSecurityException;
 import java.security.SecureRandom;
 
+import static com.puumInc.securePassword._outsourced._hash.codec.Base64.decode;
+import static com.puumInc.securePassword._outsourced._hash.codec.Base64.encode;
 
-import static com.puumInc._securePassword._outsourced._hash.codec.Base64.decode;
-import static com.puumInc._securePassword._outsourced._hash.codec.Base64.encode;
 
 /**
  * Simple {@link SCrypt} interface for hashing passwords using the
@@ -47,16 +48,18 @@ public class SCryptUtil {
             byte[] salt = new byte[16];
             SecureRandom.getInstance("SHA1PRNG").nextBytes(salt);
 
-            byte[] derived = SCrypt.scrypt(passwd.getBytes(StandardCharsets.UTF_8), salt, N, r, p, 32);
+            byte[] derived = SCrypt.scrypt(passwd.getBytes("UTF-8"), salt, N, r, p, 32);
 
             String params = Long.toString(log2(N) << 16L | r << 8 | p, 16);
 
             StringBuilder sb = new StringBuilder((salt.length + derived.length) * 2);
             sb.append("$s0$").append(params).append('$');
-            sb.append(encode(salt)).append('$');
-            sb.append(encode(derived));
+            sb.append(Base64.encode(salt)).append('$');
+            sb.append(Base64.encode(derived));
 
             return sb.toString();
+        } catch (UnsupportedEncodingException e) {
+            throw new IllegalStateException("JVM doesn't support UTF-8?");
         } catch (GeneralSecurityException e) {
             throw new IllegalStateException("JVM doesn't support SHA1PRNG or HMAC_SHA256?");
         }
@@ -79,8 +82,8 @@ public class SCryptUtil {
             }
 
             long params = Long.parseLong(parts[2], 16);
-            byte[] salt = decode(parts[3].toCharArray());
-            byte[] derived0 = decode(parts[4].toCharArray());
+            byte[] salt = Base64.decode(parts[3].toCharArray());
+            byte[] derived0 = Base64.decode(parts[4].toCharArray());
 
             int N = (int) Math.pow(2, params >> 16 & 0xffff);
             int r = (int) params >> 8 & 0xff;

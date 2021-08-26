@@ -1,6 +1,6 @@
 // Copyright (C) 2011 - Will Glozer.  All rights reserved.
 
-package com.puumInc._securePassword._outsourced._hash.jni;
+package com.puumInc.securePassword._outsourced._hash.jni;
 
 /**
  * {@code LibraryLoaders} will create the appropriate {@link LibraryLoader} for

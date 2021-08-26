@@ -1,6 +1,6 @@
 // Copyright (C) 2011 - Will Glozer.  All rights reserved.
 
-package com.puumInc._securePassword._outsourced._hash.crypto;
+package com.puumInc.securePassword._outsourced._hash.crypto;
 
 import javax.crypto.Mac;
 import javax.crypto.spec.SecretKeySpec;
